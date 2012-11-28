@@ -1,0 +1,43 @@
+﻿
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Welcome to the Drini Air Online Reservation System</h1>                
+            </hgroup>
+          
+        </div>
+    </section>
+}
+
+<h3>We suggest the following:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Getting Started</h5>
+        To see a full list of our options and services, We suggest that you Log in or Create a User Account.
+        <br />
+        <a href="/account/login">Log In</a>
+        <a href="/account/register">Register</a>
+    </li>
+
+    <li class="two">
+        <h5>Search For A Flight</h5>
+        Search for a flight by date, destination, origin, type.
+        <a href="/bookedflights">View Your Flights</a>
+    </li>
+
+    <li class="three">
+        <h5>View Available Flights</h5>
+        View our wide selection of domestic and international flights.
+        <a href="/Flights">Go To Flights</a>
+    </li>
+    @if(User.Identity.IsAuthenticated){                            
+    <li class="four">
+        <h5>View Your Reservations</h5>
+        View the Flights that you have already booked.
+        <a href="/bookedflights">View Your Reservations</a>
+    </li>
+    }
+
+
+</ol>

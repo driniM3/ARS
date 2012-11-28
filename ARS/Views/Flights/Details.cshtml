@@ -1,0 +1,197 @@
+﻿@model ARS.Models.Flight
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Flight</legend>
+    <table><tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FlightNumber):
+    </div>
+        </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightNumber)
+    </div>
+        </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Origin):
+    </div>
+            </td>
+            <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Origin)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Destination):
+    </div>
+            </td>
+        <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destination)
+    </div>
+            </td></tr>
+
+        
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date):
+    </div>
+            </td>
+            <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DepartureTime):
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DepartureTime)
+    </div>
+        </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type):
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Price:
+    </div>
+            </td><td>
+    <div class="display-field">
+        $@Html.DisplayFor(model => model.EconomyClassPrice)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Capacity:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EconomyCapacity)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Seats Booked:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EconomySeatsBooked)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Seats Available:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EconomySeatsAvailable)
+    </div>
+                </td></tr>
+
+        <tr><td>
+        <div class="display-label">
+         Business Class Price:
+    </div>
+            </td><td>
+    <div class="display-field">
+        $@Html.DisplayFor(model => model.BusinessClassPrice)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Business Class Capacity:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessCapacity)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Business Class Seats Booked:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessSeatsBooked)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Business Class Seats Available:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessSeatsAvailable)
+    </div>
+                </td></tr>
+
+        </table>
+
+</fieldset>
+
+@if(User.Identity.IsAuthenticated){
+<h2>Booking</h2>
+<form method="post" action="/BookedFlights/Book">
+    <fieldset>
+        @Html.HiddenFor(model => model.ID)
+
+
+        <div class="editor-label">
+            @Html.Label("Class")
+        </div>
+        <div  class="editor-field">
+            <select name="typeClass" >
+                <option>Economy</option>
+                <option>Business</option>                
+            </select>
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Seats")
+        </div>
+        <div class="editor-field">
+            <input type="text" name="bookSeats" />
+        </div>
+
+
+    </fieldset>
+    <p>
+            <input type="submit" value="Book" />
+        </p>
+</form>
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>
+}
+@if(!User.Identity.IsAuthenticated){
+                <b style="color:red">You Must Log in to book flight</b>
+            }

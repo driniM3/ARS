@@ -1,0 +1,114 @@
+﻿@model ARS.Models.Flight
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Flight</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            <select name="Type" >
+                <option>Domestic</option>
+                <option>International</option>                
+            </select>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FlightNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FlightNumber)
+            @Html.ValidationMessageFor(model => model.FlightNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Destination)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Destination)
+            @Html.ValidationMessageFor(model => model.Destination)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Origin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Origin)
+            @Html.ValidationMessageFor(model => model.Origin)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartureTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DepartureTime)
+            @Html.ValidationMessageFor(model => model.DepartureTime)
+        </div>
+
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EconomyClassPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EconomyClassPrice)
+            @Html.ValidationMessageFor(model => model.EconomyClassPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EconomyCapacity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EconomyCapacity)
+            @Html.ValidationMessageFor(model => model.EconomyCapacity)
+        </div>
+
+
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessClassPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessClassPrice)
+            @Html.ValidationMessageFor(model => model.BusinessClassPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessCapacity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessCapacity)
+            @Html.ValidationMessageFor(model => model.BusinessCapacity)
+        </div>
+
+
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

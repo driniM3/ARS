@@ -1,0 +1,122 @@
+﻿@model ARS.Models.Flight
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Flight</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+            @Html.HiddenFor(model => model.FlightNumber)
+
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            <select name="Type" >
+                <option>@Model.Type</option>
+                <option>@if(Model.Type.Equals("international",StringComparison.CurrentCultureIgnoreCase)){
+                        <p>Domestic</p>
+                        } 
+                        else{
+                        <p>International</p>
+                    }
+                </option>                
+            </select>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Origin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Origin)
+            @Html.ValidationMessageFor(model => model.Origin)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Destination)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Destination)
+            @Html.ValidationMessageFor(model => model.Destination)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartureTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DepartureTime)
+            @Html.ValidationMessageFor(model => model.DepartureTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EconomyClassPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EconomyClassPrice)
+            @Html.ValidationMessageFor(model => model.EconomyClassPrice)
+        </div>
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EconomyCapacity)
+        </div>
+        <div style="color:red">Economy class capacity must remain larger than the number of economy seats already booked: @Model.EconomySeatsBooked</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EconomyCapacity)
+            @Html.ValidationMessageFor(model => model.EconomyCapacity)
+        </div>
+
+        @Html.HiddenFor(model => model.EconomySeatsBooked)
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessClassPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessClassPrice)
+            @Html.ValidationMessageFor(model => model.BusinessClassPrice)
+        </div>
+                
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessCapacity)
+        </div>
+        <div style="color:red">Business class capacity must remain larger than the number of business seats already booked: @Model.BusinessSeatsBooked</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessCapacity)
+            @Html.ValidationMessageFor(model => model.BusinessCapacity)
+        </div>
+
+        @Html.HiddenFor(model => model.BusinessSeatsBooked)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+                <div style="color:red">All changes(including pricing) will also be applied to the flights that have already been booked</div>
+
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

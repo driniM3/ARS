@@ -1,0 +1,130 @@
+﻿@model IEnumerable<ARS.Models.Flight>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Flight Inventory</h2>
+
+<p>
+    @if(User.Identity.Name.Equals("admin")){
+    @Html.ActionLink("Create New", "Create")
+    }
+</p>
+<table width="100%" cellpadding="10">
+    
+
+    <tr><td colspan="6"><h2>Domestic Flights</h2></td></tr>  
+
+    <tr>
+        <th>
+           Flight #
+        </th>
+        <th>
+           Origin
+        </th>
+        <th>
+            Destination
+        </th>
+        
+        <th>
+            Date
+        </th>
+        <th>
+           Time
+        </th>
+
+        <th>Actions</th>
+    </tr>
+@foreach (var item in Model) {
+    if(item.Type.Equals("domestic",StringComparison.CurrentCultureIgnoreCase)){
+      
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @if(User.Identity.Name.Equals("admin")){
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            }
+            @Html.ActionLink("Flight Details and Booking", "Details", new { id=item.ID }) 
+            
+
+           
+        </td>
+    </tr>
+    }
+}
+
+<tr><td colspan="6"><h2>International Flights</h2></td></tr>  
+
+   <tr>
+        <th>
+           Flight #
+        </th>
+        <th>
+           Origin
+        </th>
+        <th>
+            Destination
+        </th>
+        
+        <th>
+            Date
+        </th>
+        <th>
+           Time
+        </th>
+
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    if(item.Type.Equals("international",StringComparison.CurrentCultureIgnoreCase)){
+      
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @if(User.Identity.Name.Equals("admin")){
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            }
+            
+            @Html.ActionLink("Flight Details and Booking", "Details", new { id=item.ID }) 
+            
+            
+        </td>
+    </tr>
+    }
+}
+
+</table>

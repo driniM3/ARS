@@ -1,0 +1,113 @@
+﻿@model IEnumerable<ARS.Models.Flight>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<p>Search by one or multiple fields!</p>
+
+<p>
+
+    @using (Html.BeginForm()){   
+        <div class="editor-label">
+            <label>Type</label>
+        </div>
+        <div class="editor-field">
+            <select name="type" >
+                <option></option>
+                <option>Domestic</option>
+                <option>International</option>                
+            </select>
+        </div>
+         <div class="editor-label">
+            <label>Origin</label>
+        </div>
+        <div class="editor-field">
+        @Html.DropDownList("origin", "")
+            </div>
+        
+        <div class="editor-label">
+            <label>Destination</label>
+        </div>
+        <div class="editor-field">
+        @Html.DropDownList("destination", "")
+            </div>
+        <div class="editor-label">
+            <table><tr><td>
+            <label>Flight Number</label>
+                </td><td><div style="color:red">Whole or partial.</div></td></tr></table>
+        </div>
+        <div class="editor-field">
+            <input type="text" name="flightNumber" />
+        </div>
+        <div class="editor-label">
+            <table><tr><td>
+            <label>Date</label>
+                </td><td><div style="color:red">Date must be in form MM/DD/YYYY, any substring of the date will also work(ex. MM/DD or DD/YYYY).</div></td></tr></table>
+        </div>
+        <div class="editor-field">
+            <input type="text" name="date" />
+        </div>
+       
+              <br />  
+         <input type="submit" value="Search" />
+        }
+</p>
+<table>
+   <tr>
+        <th>
+           Flight #
+        </th>
+        <th>
+           Origin
+        </th>
+        <th>
+            Destination
+        </th>
+        
+        <th>
+            Date
+        </th>
+        <th>
+           Time
+        </th>
+       <th>Type</th>
+
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            <div style="color:red"><b>@Html.DisplayFor(modelItem => item.Type)</b></div>
+        </td>
+        <td>
+            @if(User.Identity.Name.Equals("admin")){
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            }
+            @Html.ActionLink("Flight Details and Booking", "Details", new { id=item.ID }) 
+            
+        </td>
+    </tr>
+}
+
+</table>

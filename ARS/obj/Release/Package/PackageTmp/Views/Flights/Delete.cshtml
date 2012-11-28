@@ -1,0 +1,169 @@
+﻿@model ARS.Models.Flight
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Flight</legend>
+
+    <table><tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FlightNumber):
+    </div>
+        </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightNumber)
+    </div>
+        </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Origin):
+    </div>
+            </td>
+            <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Origin)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Destination):
+    </div>
+            </td>
+        <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destination)
+    </div>
+            </td></tr>
+
+        
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date):
+    </div>
+            </td>
+            <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DepartureTime):
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DepartureTime)
+    </div>
+        </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type):
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Price:
+    </div>
+            </td><td>
+    <div class="display-field">
+        $@Html.DisplayFor(model => model.EconomyClassPrice)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Capacity:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EconomyCapacity)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Seats Booked:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EconomySeatsBooked)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Seats Available:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EconomySeatsAvailable)
+    </div>
+                </td></tr>
+
+        <tr><td>
+        <div class="display-label">
+         Business Class Price:
+    </div>
+            </td><td>
+    <div class="display-field">
+        $@Html.DisplayFor(model => model.BusinessClassPrice)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Business Class Capacity:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessCapacity)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Economy Class Seats Booked:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessSeatsBooked)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         Business Class Seats Available:
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BusinessSeatsAvailable)
+    </div>
+                </td></tr>
+
+        </table>
+
+   
+</fieldset>
+
+@using (Html.BeginForm()) {
+    <div style="color:red"><b>Warning: Deleting a flight will also delete all reservations for the flight.</b></div>
+    <p>        
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,124 @@
+﻿@model ARS.Models.BookedFlights
+
+@{
+    
+    ViewBag.Title = "Details";
+
+    }
+<h2>Reservation</h2>
+
+<fieldset>
+    <legend>BookedFlights</legend>
+
+       <table><tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FlightNumber):
+    </div>
+        </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightNumber)
+    </div>
+        </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Origin):
+    </div>
+            </td>
+            <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Origin)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Destination):
+    </div>
+            </td>
+        <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destination)
+    </div>
+            </td></tr>
+
+        
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date):
+    </div>
+            </td>
+            <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+                </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DepartureTime):
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DepartureTime)
+    </div>
+        </td></tr>
+
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type):
+    </div>
+            </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+                </td></tr>
+
+   
+           <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookedBy)
+    </div>
+               </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookedBy)
+    </div>
+                   </td></tr>
+           <tr><td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Seats)
+    </div>
+               </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Seats)
+    </div>
+                   </td></tr>
+           <tr><td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Class)
+    </div>
+               </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Class)
+    </div>
+                   </td></tr>
+           <tr><td>
+
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+               </td><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+                   </td></tr>
+           </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    
+
